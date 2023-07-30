@@ -31,8 +31,6 @@ contract MoodNft is ERC721 {
         s_tokenCounter++;
     }
 
-    function _baseURI() 
-
     // Base64 util allows you to transform bytes32 data into its Base64 string representation.
     // were first going to make our metadata json object, and then we're going to use openzeppelin to convert this Json object into Json tokenURI
     function tokenURI(
