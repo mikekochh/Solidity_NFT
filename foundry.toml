@@ -2,7 +2,20 @@
 src = "src"
 out = "out"
 libs = ["lib"]
-remappings = ['@openzeppelin/contracts=lib/openzeppelin-contracts/contracts']
+remappings = [
+    '@chainlink/contracts/=lib/chainlink-brownie-contracts/contracts/',
+    '@solmate=lib/solmate/src/',
+    "foundry-devops/=lib/foundry-devops",
+    '@openzeppelin/contracts=lib/openzeppelin-contracts/contracts',
+]
 ffi = true
 
-# See more config options https://github.com/foundry-rs/foundry/tree/master/config
+#  allows us to read from specified paths. With using ffi = true, we are saying that you can do anything in the shell, but with fs_p, we are indicating what can be done, which is much safer
+fs_permissions = [{ access = "read", path = "./img/" }]
+
+[etherscan]
+mainnet = { key = "${ETHERSCAN_API_KEY}" }
+sepolia = { key = "${ETHERSCAN_API_KEY}" }
+
+[rpc_endpoints]
+sepolia = "${SEPOLIA_RPC_URL}"
